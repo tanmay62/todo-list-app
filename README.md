@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Todo List App - Setup Guide 📝
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack **Todo List App** built with **React (frontend)** and **Node.js with Express (backend)**, using a **mock JSON file** as a database.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
+✅ User Authentication (Login/Register)  
+✅ Add, Update, Delete Todos  
+✅ Fetch Todos for Specific Users  
+✅ Redux for State Management  
+✅ Backend with Node.js & Express  
+✅ Mock JSON File as Data Storage  
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 🛠️ Installation Guide
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📌 Prerequisites
+Ensure you have the following installed on your system:
+- **Node.js** (v16+ recommended) → [Download](https://nodejs.org/)
+- **Git** (For version control) → [Download](https://git-scm.com/)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📂 Packages installed
 
-### `npm run build`
+For frontend - 
+1. bootstrap
+2. react-redux
+3. react-router-dom
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For backend - 
+1. express
+2. express-session
+3. cors
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Todo List App - How It Works 📝
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This document explains the **flow of the application**, from user authentication to managing todos.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Steps to Use the Application
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **1️⃣ Start the Application**
+1. Open a terminal and navigate to the src/backend (`server`) folder.
+- This will start the backend on `http://localhost:5000` after running command as node server.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Open a new terminal and navigate to the frontend (`todo-list-app`) folder.
+- This will start the frontend on `http://localhost:3000`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### **2️⃣ User Authentication (Login)**
+- On the homepage, **enter your username** to log in.
+- This username is stored in the application state.
+- If no username is provided, you won’t be able to add or view todos.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **3️⃣ Adding a New Todo**
+1. After logging in, go to the **Todo Input Field**.
+2. Type your task and click the **"Add Todo"** button.
+3. The todo will be saved in the **mock database (db.json)** and displayed in the list.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### **4️⃣ Viewing Todos**
+- On login, the app fetches todos **specific to the logged-in user**.
+- The todos are retrieved from `http://localhost:5000/api/todos?user=username`.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### **5️⃣ Updating a Todo**
+1. Click on a todo item to **toggle its completion status**.
+2. The updated todo will be saved in `db.json`.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### **6️⃣ Deleting a Todo**
+1. Click the **Delete** button next to a todo item.
+2. The todo will be removed from `db.json`.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### **7️⃣ How Data is Stored**
+- The todos are stored in a **mock JSON file (db.json)** instead of a database.
+- Example JSON structure:
+```json
+"users": {
+    "bruce34": {
+      "password": "Bruce@3456",
+      "todos": [
+        {
+          "id": 1740291668789,
+          "text": "sdfsdv",
+          "completed": false
+        },
+        {
+          "id": 1740291672334,
+          "text": "efcdsf",
+          "completed": false
+        },
+        {
+          "id": 1740291676016,
+          "text": "wedwdwe",
+          "completed": false
+        },
+        {
+          "id": 1740479563915,
+          "text": "tertgfd",
+          "completed": false
+        }
+      ]
+    }
+}
 
-### Deployment
+# Todo List App - API Endpoints  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Authentication APIs  
+POST /api/register  
+POST /api/login  
+GET /api/verify-session  
+POST /api/logout  
 
-### `npm run build` fails to minify
+## Todo APIs  
+GET /api/todos/:username  
+POST /api/todos/:username  
+PUT /api/todos/:username/:todoId  
+PUT /api/todos/:username/:todoId/edit  
+DELETE /api/todos/:username/:todoId 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
