@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* Custom Bootstrap Tooltip */
+.tooltip-inner {
+  background-color: black !important; /* Black background */
+  color: white !important; /* White text */
+  font-weight: bold;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before,
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before,
+.tooltip.bs-tooltip-left .tooltip-arrow::before,
+.tooltip.bs-tooltip-right .tooltip-arrow::before {
+  border-top-color: black !important;
+  border-bottom-color: black !important;
+  border-left-color: black !important;
+  border-right-color: black !important;
+}
+
+
