@@ -23,14 +23,14 @@ const Login = () => {
             const response = await fetch("http://localhost:5000/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "include", // Ensure session is maintained
+                credentials: "include",
                 body: JSON.stringify({ username, password }),
             });
 
             const result = await response.json();
 
             if (response.ok) {
-                dispatch(login(username)) // Store user in Auth Context
+                dispatch(login(username))
                 dispatch(showNotification("Login Successful!", "success"));
                 navigate(`/dashboard?user=${username}`);
             } else {
